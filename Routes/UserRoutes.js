@@ -9,7 +9,7 @@ const secretKey = 'yourSecretKey';
 
 // Registration route
 router.post('/register', async (req, res) => {
-  const { mobile, email, password } = req.body;
+  const { username ,mobile, email, password } = req.body;
 
   // Check if the email is already in use
   const existingUser = await User.findOne({ email });
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
   // Hash the password using bcrypt
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = new User({ mobile, email, password: hashedPassword});
+  const user = new User({ username, mobile, email, password: hashedPassword});
 
   // Save the user to the database
   await user.save();
@@ -55,7 +55,6 @@ router.post('/login', async (req, res) => {
 
   res.json({ message: 'Authentication successful', token, user });
 });
-
 
 
 

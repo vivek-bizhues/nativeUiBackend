@@ -15,8 +15,10 @@ mongoose.connect('mongodb+srv://vivek:bhatt@cluster0.ttta4v1.mongodb.net/data?re
 // Import and use the user route
 
 const userRoutes = require ('./Routes/UserRoutes.js');
+const imageRoutes = require ('./Routes/ImageRoutes.js')
 
 app.use('/user', userRoutes);
+app.use('/image', imageRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
